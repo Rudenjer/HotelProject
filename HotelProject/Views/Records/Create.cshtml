@@ -1,0 +1,39 @@
+﻿@model HotelData.ViewModels.RecordManageViewModels
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "Records", FormMethod.Post)) 
+    {
+        @Html.AntiForgeryToken()
+        //@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <p>Номер комнаты: @ViewBag.Id</p>
+            <br>
+            <p>С: @ViewBag.DateIn</p>
+            <br>
+            <p>До: @ViewBag.DateOut</p>
+            <br>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

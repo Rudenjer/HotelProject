@@ -1,0 +1,36 @@
+﻿@model HotelData.ViewModels.RecordDateVievModels
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+    <div>
+        @using (Ajax.BeginForm("GetAvailableRooms", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+           <br>
+            @Html.EditorFor(model=>model.DateIn, new { htmlAttributes = new { @class = "form-control" } })
+            <br>
+           @Html.EditorFor(model => model.DateOut, new { htmlAttributes = new { @class = "form-control" } })
+
+            <br>
+
+            <input type="submit" value="Поиск" />
+        }
+        <div id="results">
+           
+        </div>
+    </div>
+</body>
+</html>
+
+@helper Calendar()
+{
+    <input type="date" name="calendar">
+}
+

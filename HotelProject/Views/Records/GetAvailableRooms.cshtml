@@ -1,0 +1,54 @@
+﻿@model IEnumerable<HotelData.ViewModels.RoomDateViewModel>
+
+
+
+
+<div id="searchresults">
+    <div id="modDialog" class="modal fade">
+        <div id="dialogContent" class="modal-dialog"></div>
+    </div>
+    
+    <br />
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.RoomID)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)  </th>
+            <th>@Html.DisplayNameFor(model => model.Persons)</th>
+            <th>     </th>
+            
+            
+            
+            
+        </tr>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.RoomID</td>
+                <td>@item.Price</td>
+                <td>@item.Persons</td>   
+                <td>@Html.ActionLink("Забронировать", "Create", new { id = item.RoomID, DateIn = item.DateIn, DateOut = item.DateOut})</td>
+            </tr>
+        }
+    </table>
+
+
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+           $(".compItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+}
+
