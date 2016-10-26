@@ -87,21 +87,16 @@ namespace HotelProject.Controllers
                 }
 
                 Room r = rr.FindRoom(Convert.ToInt32(id));
-                //var Records = db.Records.Where(a => a.Room.RoomID.Equals(name)).ToList();
-                //if(r.Records==null)
-                //{
-                //    return HttpNotFound();
-                //}
+                
 
                 return PartialView(r.Records);
-                //return PartialView(db.Records.Select(m=>m.RoomID==Convert.ToInt32(id)));
+               
             }
             catch (NullReferenceException ex)
             {
-                //DateTime t = new DateTime();
-                //t.ToShortDateString
+                
                 return HttpNotFound();
-                //return PartialView(null);
+                
             }
         }
 
