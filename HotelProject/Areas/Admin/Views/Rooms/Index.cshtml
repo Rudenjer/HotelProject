@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HotelData.Entities.Room>
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+<br>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persons)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RoomID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RoomID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoomID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

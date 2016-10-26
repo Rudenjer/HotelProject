@@ -81,6 +81,13 @@ namespace HotelProject.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    bool b= UserManager.IsInRole(user.Id, "admin");
+                    if(b==true)
+                    {
+                        return RedirectToLocal("~/Admin/Home/Index");
+                    }
+                    
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

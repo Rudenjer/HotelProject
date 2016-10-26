@@ -13,11 +13,27 @@ namespace HotelProject
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+
+            //routes.MapRoute("MyRoute", "{controller}/{action}",
+            //    namespaces: new[] { "HotelProjects.Controllers" });
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" },
+            //    namespaces: new[] { "HotelProject.Controllers" });
+
+            routes.MapRoute(namespaces: new[] { "HotelProject.Controllers" },
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
+
+
             );
+
+            //routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" },
+            //    namespaces: new[] { "HotelProject.Controllers" });
         }
     }
 }

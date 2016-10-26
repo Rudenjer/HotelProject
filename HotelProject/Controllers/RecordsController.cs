@@ -21,9 +21,7 @@ namespace HotelProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         RoomRepository rr = new RoomRepository();
-        static DateTime DateInM;
-        static DateTime DateOutM;
-        static int RoomIdM;
+
 
         // GET: Records
         public async Task<ActionResult> Index()
