@@ -225,6 +225,7 @@ table {
 }
 
 
+
 @media print {
   * {
     color: #000 !important;
@@ -289,6 +290,7 @@ table {
     background-color: #fff !important;
     background: rgba(124,123,0,0.60);*/
   }
+
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;

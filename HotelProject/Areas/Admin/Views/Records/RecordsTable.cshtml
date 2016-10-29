@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HotelData.Entities.Record>
+
+
+
+
+<style>
+    .trRed {
+        background-color: rgba(255,0,0,0.6);
+    }
+
+    .trGrey {
+        background-color: rgba(125,125,125,0.6);
+    }
+
+    .trPurple {
+        background-color: rgba(63,26,89,0.6);
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOut)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.DateIn <= DateTime.Now && item.DateOut >= DateTime.Now)
+        {
+            <tr class="trRed">
+                <td>@item.RecordID</td>
+                <td>@item.DateIn</td>
+                <td>@item.DateOut</td>
+            </tr>
+        }
+        if (item.DateIn > DateTime.Now)
+        {
+            <tr class="trPurple">
+                <td>@item.RecordID</td>
+                <td>@item.DateIn</td>
+                <td>@item.DateOut</td>
+            </tr>
+        }
+        if (item.DateOut < DateTime.Now)
+        {
+            <tr class="trGrey">
+                <td>@item.RecordID</td>
+                <td>@item.DateIn</td>
+                <td>@item.DateOut</td>
+            </tr>
+        }
+        @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecordID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecordID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecordID })
+            </td>*@
+
+    }
+
+</table>
+

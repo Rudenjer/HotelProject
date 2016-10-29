@@ -4,48 +4,6 @@
 
     <h3>Все записи о комнате : @Model.First().Room.RoomID</h3>
     <br />
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ClientID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateIn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOut)
-            </th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            if (item.DateIn <= DateTime.Now && item.DateOut >= DateTime.Now)
-            {
-                <tr bgcolor="FF0000">
-                    <td>@item.RecordID</td>
-                    <td>@item.DateIn</td>
-                    <td>@item.DateOut</td>
-                </tr>
-            }
-            if (item.DateIn > DateTime.Now)
-            {
-                <tr bgcolor="7FFFD4">
-                    <td>@item.RecordID</td>
-                    <td>@item.DateIn</td>
-                    <td>@item.DateOut</td>
-                </tr>
-            }
-            if (item.DateOut < DateTime.Now)
-            {
-                <tr bgcolor="c0c0c0">
-                    <td>@item.RecordID</td>
-                    <td>@item.DateIn</td>
-                    <td>@item.DateOut</td>
-                </tr>
-            }
-
-        }
-    </table>
-
-
+    @Html.Partial("RecordsTable", Model)
 </div>
 
