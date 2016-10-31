@@ -65,7 +65,13 @@ namespace HotelData.Context
                 new Room { Class="2", Persons=3, Price=120, Records = records2 }
             };
 
-            
+            List<RoomInfo> roomInfos = new List<RoomInfo>
+            {
+                new RoomInfo {RoomInfoID=1,ClassName="Люксовый класс", Info="Комната с самым лучшим ремонтом", Photo="" },
+                new RoomInfo {RoomInfoID=2,ClassName="Средний класс", Info="Комната с обычным ремонтом", Photo="" },
+                new RoomInfo {RoomInfoID=3,ClassName="Эконом класс", Info="Самая доступная комната", Photo="" }
+
+            };
 
 
 

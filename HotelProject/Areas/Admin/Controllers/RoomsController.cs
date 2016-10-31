@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using HotelData.Context;
 using HotelData.Entities;
 using HotelData.Repositories;
+using HotelData.ViewModels;
 
 namespace HotelProject.Areas.Admin.Controllers
 {
@@ -16,6 +17,7 @@ namespace HotelProject.Areas.Admin.Controllers
     public class RoomsController : Controller
     {
         RoomRepository rr = new RoomRepository();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Rooms
         public ActionResult Index()
@@ -31,6 +33,18 @@ namespace HotelProject.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Room room = rr.FindRoom(id);
+            RoomInfo roomInfo = db.RoomInfos.Find(room.Class);
+
+            var rrim = new RoomRoomInfoViewModel();
+            rrim.RoomID = room.RoomID;
+            rrim.Price = room.Price;
+            rrim.Persons = room.Persons;
+            rrim.ClassName = roomInfo.ClassName;
+            rrim.Info = roomInfo.Info;
+            rrim.Photo = roomInfo.Photo;
+            //var rrim = new RoomRoomInfoViewModel(room.RoomID, room.Price, room.Persons, roomInfo.ClassName, roomInfo.Info, roomInfo.Photo);
+            
+
             if (room == null)
             {
                 return HttpNotFound();

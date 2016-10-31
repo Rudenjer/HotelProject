@@ -233,6 +233,9 @@
     <Content Include="Areas\Admin\Views\Records\GetRecords.cshtml" />
     <Content Include="Areas\Admin\Views\Records\NullRecords.cshtml" />
     <Content Include="Areas\Admin\Views\Records\RecordsTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Delete.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

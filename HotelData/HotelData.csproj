@@ -125,6 +125,7 @@
     <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\Record.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\RoomInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />

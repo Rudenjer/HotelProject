@@ -39,13 +39,13 @@ namespace HotelProject.Areas.Admin.Controllers
             {
                 if (id == "" || id == null)
                 {
-                    return PartialView("NullRecords", db.Records);
+                    return PartialView("NullRecords", db.Records.OrderBy(item=>item.DateIn));
                 }
 
                 Room r = rr.FindRoom(Convert.ToInt32(id));
 
 
-                return PartialView(r.Records);
+                return PartialView(r.Records.OrderBy(item => item.DateIn));
 
             }
             catch (NullReferenceException ex)

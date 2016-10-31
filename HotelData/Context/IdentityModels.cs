@@ -29,12 +29,14 @@ namespace HotelData.Context
         }
 
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomInfo> RoomInfos { get; set; }
+        public DbSet<HotelData.Entities.Record> Records { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<HotelData.Entities.Record> Records { get; set; }
+        
     }
 }
