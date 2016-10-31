@@ -67,15 +67,16 @@ namespace HotelData.Context
 
             List<RoomInfo> roomInfos = new List<RoomInfo>
             {
-                new RoomInfo {RoomInfoID=1,ClassName="Люксовый класс", Info="Комната с самым лучшим ремонтом", Photo="" },
-                new RoomInfo {RoomInfoID=2,ClassName="Средний класс", Info="Комната с обычным ремонтом", Photo="" },
-                new RoomInfo {RoomInfoID=3,ClassName="Эконом класс", Info="Самая доступная комната", Photo="" }
+                new RoomInfo {RoomInfoID=1,ClassName="Люксовый класс", Info="Комната с самым лучшим ремонтом", Photo="~/Content/Slonik.jpg" },
+                new RoomInfo {RoomInfoID=2,ClassName="Средний класс", Info="Комната с обычным ремонтом", Photo="~/Content/Slonik.jpg" },
+                new RoomInfo {RoomInfoID=3,ClassName="Эконом класс", Info="Самая доступная комната", Photo="~/Content/Slonik.jpg" }
 
             };
 
 
 
             context.Rooms.AddRange(rooms);
+            context.RoomInfos.AddRange(roomInfos);
             context.SaveChanges();
 
             //base.Seed(context);

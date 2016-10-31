@@ -12,7 +12,7 @@ namespace HotelData.Entities
     public class RoomInfo
     {
         [DisplayName("Номер")]
-        public int? RoomInfoID { get; set;}
+        public int RoomInfoID { get; set;}
 
         [DisplayName("Название класса")]
         public string ClassName { get; set; }

@@ -214,6 +214,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Iron_Shield.png" />
     <Content Include="Content\Shield.jpg" />
+    <Content Include="Content\Slonik.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -236,6 +237,7 @@
     <Content Include="Areas\Admin\Views\Rooms\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Rooms\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Rooms\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

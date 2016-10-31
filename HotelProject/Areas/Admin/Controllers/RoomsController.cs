@@ -33,7 +33,7 @@ namespace HotelProject.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Room room = rr.FindRoom(id);
-            RoomInfo roomInfo = db.RoomInfos.Find(room.Class);
+            RoomInfo roomInfo = db.RoomInfos.Find(Convert.ToInt32(room.Class));
 
             var rrim = new RoomRoomInfoViewModel();
             rrim.RoomID = room.RoomID;
@@ -49,7 +49,7 @@ namespace HotelProject.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(rrim);
         }
 
         // GET: Rooms/Create
