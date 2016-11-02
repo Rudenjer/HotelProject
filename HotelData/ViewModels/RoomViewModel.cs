@@ -48,7 +48,7 @@ namespace HotelData.ViewModels
 
         [DisplayName("Количество человек")]
         public int Persons { get; set; }
-        
+
 
         [DisplayName("Название класса")]
         public string ClassName { get; set; }
@@ -60,4 +60,25 @@ namespace HotelData.ViewModels
         public string Photo { get; set; }
     }
 
+
+    public class RoomInfoListViewModel
+        {
+
+        [DisplayName("Номер комнаты")]
+        public int RoomID { get; set; }
+
+        [DisplayName("Цена")]
+        public int Price { get; set; }
+
+
+        [DisplayName("Количество человек")]
+        public int Persons { get; set; }
+
+
+        [DisplayName("Класс номера")]
+        public string Class { get; set; }
+
+        public SelectList RoomInfos { get; set; }
+
+        }
 }

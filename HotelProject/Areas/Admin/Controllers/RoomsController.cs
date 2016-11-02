@@ -83,11 +83,30 @@ namespace HotelProject.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Room room = rr.FindRoom(id);
+
+            SelectList roomInfoSelectList = new SelectList(db.RoomInfos.ToList<RoomInfo>(), "RoomInfoID", "ClassName");
+
+            RoomInfoListViewModel rilvm = new RoomInfoListViewModel();
+            rilvm.RoomID = room.RoomID;
+            rilvm.Persons = room.Persons;
+            rilvm.Price = room.Price;
+            rilvm.Class = room.Class;
+            rilvm.RoomInfos = roomInfoSelectList;
+
+            //RoomInfo roomInfo = db.RoomInfos.Find(Convert.ToInt32(room.Class));
+
+            //var rrim = new RoomRoomInfoViewModel();
+            //rrim.RoomID = room.RoomID;
+            //rrim.Price = room.Price;
+            //rrim.Persons = room.Persons;
+            //rrim.ClassName = roomInfo.ClassName;
+            //rrim.Info = roomInfo.Info;
+            //rrim.Photo = roomInfo.Photo;
             if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(room);
+            return View(rilvm);
         }
 
         // POST: Rooms/Edit/5
@@ -95,14 +114,21 @@ namespace HotelProject.Areas.Admin.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomID,Price,Persons,Class")] Room room)
+        //public ActionResult Edit([Bind(Include = "RoomID,Price,Persons,Class")] Room room)
+        public ActionResult Edit(RoomInfoListViewModel roomLVM)
         {
             if (ModelState.IsValid)
             {
+                //Room room = new Room();
+
+                Room room = rr.FindRoom(roomLVM.RoomID);
+                room.Price = roomLVM.Price;
+                room.Persons = roomLVM.Persons;
+                room.Class = roomLVM.Class;
                 rr.ModifyRoom(room);
                 return RedirectToAction("Index");
             }
-            return View(room);
+            return View(roomLVM);
         }
 
         // GET: Rooms/Delete/5

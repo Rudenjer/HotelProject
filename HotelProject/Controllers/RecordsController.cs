@@ -76,32 +76,33 @@ namespace HotelProject.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        //TODO: запилить метод
 
         public ActionResult GetRecords(string id)
         {
             try
             {
-                if(id=="" || id==null)
+                if (id == "" || id == null)
                 {
-                    return PartialView("NullRecords",db.Records);
+                    return PartialView("NullRecords", db.Records);
                 }
 
                 Room r = rr.FindRoom(Convert.ToInt32(id));
-                
+
 
                 return PartialView(r.Records);
-               
+
             }
             catch (NullReferenceException ex)
             {
-                
+
                 return HttpNotFound();
-                
+
             }
         }
 
 
-        
+
 
         //public async Task<ActionResult> Create([Bind(Include = "RecordID,ClientID,DateIn,DateOut")] Record record)
         //{

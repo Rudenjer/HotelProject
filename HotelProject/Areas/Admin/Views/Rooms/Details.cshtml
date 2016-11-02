@@ -3,8 +3,7 @@
 
 @{ 
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    
-    }
+}
 
 
 <br>
@@ -49,7 +48,6 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Photo)
             <img src="@Url.Content(Model.Photo)" alt="Sample Image" width="300px" />
         </dd>
 
