@@ -36,6 +36,8 @@ namespace HotelData.Repositories
         public void DeleteRoom(Room r)
         {
             db.Rooms.Remove(r);
+            var rec = db.Records.Where(a => a.RoomID == r.RoomID);
+            db.Records.RemoveRange(rec);
             db.SaveChanges();
         }
 

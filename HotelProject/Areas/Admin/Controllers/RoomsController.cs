@@ -78,35 +78,38 @@ namespace HotelProject.Areas.Admin.Controllers
         // GET: Rooms/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Room room = rr.FindRoom(id);
+            
 
-            SelectList roomInfoSelectList = new SelectList(db.RoomInfos.ToList<RoomInfo>(), "RoomInfoID", "ClassName");
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Room room = rr.FindRoom(id);
 
-            RoomInfoListViewModel rilvm = new RoomInfoListViewModel();
-            rilvm.RoomID = room.RoomID;
-            rilvm.Persons = room.Persons;
-            rilvm.Price = room.Price;
-            rilvm.Class = room.Class;
-            rilvm.RoomInfos = roomInfoSelectList;
+                SelectList roomInfoSelectList = new SelectList(db.RoomInfos.ToList<RoomInfo>(), "RoomInfoID", "ClassName");
 
-            //RoomInfo roomInfo = db.RoomInfos.Find(Convert.ToInt32(room.Class));
+                RoomInfoListViewModel rilvm = new RoomInfoListViewModel();
+                rilvm.RoomID = room.RoomID;
+                rilvm.Persons = room.Persons;
+                rilvm.Price = room.Price;
+                rilvm.Class = room.Class;
+                rilvm.RoomInfos = roomInfoSelectList;
 
-            //var rrim = new RoomRoomInfoViewModel();
-            //rrim.RoomID = room.RoomID;
-            //rrim.Price = room.Price;
-            //rrim.Persons = room.Persons;
-            //rrim.ClassName = roomInfo.ClassName;
-            //rrim.Info = roomInfo.Info;
-            //rrim.Photo = roomInfo.Photo;
-            if (room == null)
-            {
-                return HttpNotFound();
-            }
-            return View(rilvm);
+                //RoomInfo roomInfo = db.RoomInfos.Find(Convert.ToInt32(room.Class));
+
+                //var rrim = new RoomRoomInfoViewModel();
+                //rrim.RoomID = room.RoomID;
+                //rrim.Price = room.Price;
+                //rrim.Persons = room.Persons;
+                //rrim.ClassName = roomInfo.ClassName;
+                //rrim.Info = roomInfo.Info;
+                //rrim.Photo = roomInfo.Photo;
+                if (room == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(rilvm);
+            
         }
 
         // POST: Rooms/Edit/5
@@ -117,17 +120,28 @@ namespace HotelProject.Areas.Admin.Controllers
         //public ActionResult Edit([Bind(Include = "RoomID,Price,Persons,Class")] Room room)
         public ActionResult Edit(RoomInfoListViewModel roomLVM)
         {
+            roomLVM.RoomInfos= new SelectList(db.RoomInfos.ToList<RoomInfo>(), "RoomInfoID", "ClassName");
+            Room room = rr.FindRoom(roomLVM.RoomID);
             if (ModelState.IsValid)
             {
-                //Room room = new Room();
+                
 
-                Room room = rr.FindRoom(roomLVM.RoomID);
+                
                 room.Price = roomLVM.Price;
                 room.Persons = roomLVM.Persons;
                 room.Class = roomLVM.Class;
                 rr.ModifyRoom(room);
                 return RedirectToAction("Index");
             }
+
+            //RoomInfoListViewModel rilvm = new RoomInfoListViewModel();
+            //rilvm.RoomID = room.RoomID;
+            //rilvm.Persons = room.Persons;
+            //rilvm.Price = room.Price;
+            //rilvm.Class = room.Class;
+            //rilvm.RoomInfos = rilvm.RoomInfos;
+
+
             return View(roomLVM);
         }
 

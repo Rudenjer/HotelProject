@@ -10,16 +10,17 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
+    <br>
+    @*<p>
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </p>*@
 
 
     <div>
         @using (Ajax.BeginForm("GetRecords", new AjaxOptions { UpdateTargetId = "results" }))
         {
-            @Html.DropDownList("id", Model.Rooms as SelectList, "--", new { htmlAttributes = new { @class = "form-control" } })
-
+            @Html.DropDownList("id", Model.Rooms as SelectList, "--", new { @class = "form-control" } )
+            <br>
             <input type="submit" value="Поиск"/>
         }
         <div id="results">

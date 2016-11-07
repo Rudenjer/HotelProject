@@ -13,7 +13,6 @@
 
 </head>
 <body>
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @*<img src="~/Content/Iron_Shield.png" alt="" id="rotate3">*@
     <div class="navbar navbar-default navbar-fixed-top" style="background-color: #dddddd;">
         <div class="container">
@@ -29,7 +28,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Комнаты", "Index", "Rooms", new { area = "Admin" }, new { })</li>
                     <li>@Html.ActionLink("Записи", "Index", "Records", new { area = "Admin" }, new { })</li>
-                    <li>@Html.ActionLink("Состояние брони", "ForAvailableRooms", "Records")</li>
+                    <li>@Html.ActionLink("Состояние брони", "BookTable", "Records", new { area = "Admin" }, new { })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

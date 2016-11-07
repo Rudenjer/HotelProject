@@ -14,15 +14,18 @@ namespace HotelData.Entities
         [DisplayName("Номер комнаты")]
         public int RoomID { get; set; }
 
+        [Range(0,100000,ErrorMessage ="Недопустимая цена")]
         [DisplayName("Цена")]
         public int Price { get; set; }
 
 
         [DisplayName("Количество человек")]
+        [Range(1, 6, ErrorMessage = "Недопустимая количество человек")]
         public int Persons { get; set; }
 
 
         [DisplayName("Класс номера")]
+        [Range(1, 3, ErrorMessage = "Недопустимый класс")]
         public string Class { get; set; }
 
        

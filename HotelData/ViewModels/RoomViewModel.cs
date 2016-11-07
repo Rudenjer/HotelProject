@@ -17,10 +17,12 @@ namespace HotelData.ViewModels
         public int RoomID { get; set; }
 
         [DisplayName("Цена")]
+        [Range(0, 100000, ErrorMessage = "Недопустимая цена")]
         public int Price { get; set; }
 
 
         [DisplayName("Количество человек")]
+        [Range(0, 6, ErrorMessage = "Недопустимая количество человек")]
         public int Persons { get; set; }
 
 
@@ -43,10 +45,12 @@ namespace HotelData.ViewModels
         public int RoomID { get; set; }
 
         [DisplayName("Цена")]
+        [Range(0, 100000, ErrorMessage = "Недопустимая цена")]
         public int Price { get; set; }
 
 
         [DisplayName("Количество человек")]
+        [Range(0, 6, ErrorMessage = "Недопустимая количество человек")]
         public int Persons { get; set; }
 
 
@@ -67,11 +71,13 @@ namespace HotelData.ViewModels
         [DisplayName("Номер комнаты")]
         public int RoomID { get; set; }
 
+        [Range(0, 100000, ErrorMessage = "Недопустимая цена")]
         [DisplayName("Цена")]
         public int Price { get; set; }
 
 
         [DisplayName("Количество человек")]
+        [Range(0, 6, ErrorMessage = "Недопустимая количество человек")]
         public int Persons { get; set; }
 
 

@@ -55,5 +55,10 @@ namespace HotelProject.Areas.Admin.Controllers
 
             }
         }
+
+        public ActionResult BookTable()
+        {
+            return View();
+        }
     }
 }
