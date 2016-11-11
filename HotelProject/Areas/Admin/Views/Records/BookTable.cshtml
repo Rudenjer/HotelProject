@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -11,79 +11,20 @@
 </head>
 <body>
     <div>
-        <table class="table" id="table">
-            <tr>
-                <th>
-                    ПН
-                </th>
-                <th>
-                    ВТ
-                </th>
-                <th>
-                    СР
-                </th>
-                <th>
-                    ЧТ
-                </th>
-                <th>
-                    ПТ
-                </th>
-                <th>
-                    СБ
-                </th>
-                <th>
-                    ВС
-                </th>
-            </tr>
+        @using (Ajax.BeginForm("BookRoomTable", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+            @Html.DropDownList("id", Model.Rooms as SelectList, "--", new { @class = "form-control" })
+            <br>
+            <input type="submit" value="Поиск" />
+        }
+        <div id="results">
             
-    
-        </table> 
+        </div>
     </div>
 </body>
 </html>
 
-<script>
-    var k = new Date(new Date().getYear(), new Date().getMonth(), 1);
-    var startDay = k.getDay();
-    var empDays = 0;
 
-    var tr = document.createElement('tr');
-    tr.id = 'tr';
-    document.getElementById('table').appendChild(tr);
 
-    while (empDays++ <= startDay)
-    {
-        var td = document.createElement('td');
-        td.id = 'td';
-        document.getElementById('table').appendChild(td);
-        td.innerHTML = startDay;
-        
-    }
 
-    for (var i = 1; i < 32; i++)
-    {
-        if (empDays >= 7) {
-            var tr = document.createElement('tr');
-            document.getElementById('table').appendChild(tr);
-            tr.id = 'tr';
-            empDays = 0;
-        }
-        
 
-            var td = document.createElement('td');
-            document.getElementById('table').appendChild(td);
-            td.innerHTML = i;
-            empDays++;
-        
-    }
-
-//var tr = document.createElement('tr');
-//tr.id = 'tr';
-//var td1 = document.createElement('td');
-//var td2 = document.createElement('td');
-//document.getElementById('table').appendChild(tr);
-//td1.innerHTML='2';
-//document.getElementById('tr').appendChild(td1);
-//td2.innerHTML='2';
-//document.getElementById('tr').appendChild(td2);
-</script>

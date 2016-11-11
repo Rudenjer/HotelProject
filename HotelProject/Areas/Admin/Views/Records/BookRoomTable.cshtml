@@ -1,12 +1,15 @@
-﻿@model HotelData.ViewModels.RecordDateVievModels
+﻿@model IEnumerable<HotelData.Entities.Record>
 
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>BookTable</title>
     <style>
         .content1 {
             width: 14.3%;
@@ -31,63 +34,7 @@
             background-color: red;
         }
     </style>
-</head>
-<body>
-    
-    <div>
-        @using (Ajax.BeginForm("GetAvailableRooms", new AjaxOptions { UpdateTargetId = "results" }))
-        {
-           <br>
-            @Html.EditorFor(model=>model.DateIn, new { htmlAttributes = new { @class = "form-control" } })
-            <br>
-           @Html.EditorFor(model => model.DateOut, new { htmlAttributes = new { @class = "form-control" } })
-
-            <br>
-
-            <input type="submit" value="Поиск" />
-        }
-        <div id="results">
-           
-        </div>
-    </div>
-    <label>С:</label>
-    <label id="startDate"></label>
-    <label>До:</label>
-    <label id="finishDate"></label>
-    <div>
-        <table class="table" id="table">
-            <tr>
-                <th>
-                    ПН
-                </th>
-                <th>
-                    ВТ
-                </th>
-                <th>
-                    СР
-                </th>
-                <th>
-                    ЧТ
-                </th>
-                <th>
-                    ПТ
-                </th>
-                <th>
-                    СБ
-                </th>
-                <th>
-                    ВС
-                </th>
-            </tr>
-
-
-        </table>
-    </div>
-</body>
-</html>
-
-
-<script>
+    <script>
     var k = new Date(new Date().getYear(), new Date().getMonth(), 1);
     var startDay = k.getDay();
     var empDays = 0;
@@ -205,5 +152,66 @@
         }
     }
 
-</script>
+    function DateRecordColor(startDate, finishDate) {
+        alert("23");
+        for (var i = startDate; i <= finishDate; i++) {
+
+            var el = document.getElementById("cont"+i.toString());
+            el.style.backgroundColor = "lightblue";
+
+        }
+        return;
+    }
+
+    </script>
+</head>
+<body>
+    <label>С:</label>
+    <label id="startDate"></label>
+    <label>До:</label>
+    <label id="finishDate"></label>
+    <div>
+        <table class="table" id="table">
+            <tr>
+                <th>
+                    ПН
+                </th>
+                <th>
+                    ВТ
+                </th>
+                <th>
+                    СР
+                </th>
+                <th>
+                    ЧТ
+                </th>
+                <th>
+                    ПТ
+                </th>
+                <th>
+                    СБ
+                </th>
+                <th>
+                    ВС
+                </th>
+            </tr>
+
+
+        </table>
+    </div>
+
+    @{ 
+        foreach (var item in Model)
+        {
+          <script>
+              alert("33");
+              DateRecordColor(@item.DateIn.Day,@item.DateOut.Day);
+              </script>
+           @*@Html.Raw("< script >DateRecordColor("+@item.DateIn+","+ @item.DateOut+");</ script >")*@
+        }
+
+    }
+</body>
+</html>
+
 

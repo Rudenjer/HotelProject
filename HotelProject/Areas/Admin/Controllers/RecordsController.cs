@@ -58,7 +58,21 @@ namespace HotelProject.Areas.Admin.Controllers
 
         public ActionResult BookTable()
         {
-            return View();
+            SelectList roomSelectList = new SelectList(rr.GetRooms(), "RoomID", "RoomID");
+
+            RecordRoomViewModels rrvm = new RecordRoomViewModels { Rooms = roomSelectList, Records = db.Records.ToList() };
+
+            return View(rrvm);
         }
+
+        public ActionResult BookRoomTable(string id)
+        {
+            Room r = rr.FindRoom(Convert.ToInt32(id));
+
+
+
+            return View(r.Records);
+        }
+
     }
 }
